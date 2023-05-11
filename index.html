@@ -1,0 +1,57 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <script type="text/javascript">
+    //v2
+    function tryopenscheme() {
+
+	  var pWeb = 'https://www.max.co.il:abc@www.linkedin.com/in/oz-shalev/?data=%22';
+  
+	  var weblink = decodeURIComponent(pWeb);
+	  weblink = checkWebParam(weblink);
+	     
+	  alert(weblink);
+	  console.log(weblink);
+
+    }
+
+		function getParameterByName(name) {
+		  name = name.replace(/[\[\]]/g, "\\$&");
+		  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+			results = regex.exec(window.location.href);
+		  if (!results) return null;
+		  if (!results[2]) return '';
+		  return decodeURIComponent(results[2].replace(/\+/g, " "));
+		}
+
+		function checkWebParam(webParam){
+		var isAtSign = webParam.indexOf('@') >= 0;
+		alert("check At " + isAtSign);
+		console.log("check At " + isAtSign);
+		alert("check max" + webParam.indexOf('https://online.max.co.il'));
+		console.log("check max" + webParam.indexOf('https://online.max.co.il'));
+		alert("check online " + webParam.indexOf('https://www.max.co.il'));
+		console.log("check online " + webParam.indexOf('https://www.max.co.il'));
+		
+		  if(isAtSign ||
+			 webParam.indexOf('https://online.max.co.il') == -1 && 
+			 webParam.indexOf('https://www.max.co.il') == -1) {
+		     return 'https://www.max.co.il';
+		  }
+		  return webParam;
+		 }
+	
+    
+    //tryopenscheme();
+
+  </script>
+</head>
+<body>
+  <br /><br />
+  <p>
+    Gadiel Test 
+  </p>
+  <input value="click to test" type="button" onclick=tryopenscheme() />
+</body>
+</html>
